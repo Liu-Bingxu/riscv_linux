@@ -1,0 +1,39 @@
+if TARGET_SZTULBX_YSYXLBX
+
+config SYS_BOARD
+	default "ysyxlbx"
+
+config SYS_VENDOR
+	default "sztulbx"
+
+config SYS_CPU
+	default "generic"
+
+config SYS_CONFIG_NAME
+	default "sztulbx-ysyxlbx"
+
+config SYS_STEXT_BASE
+    hex
+	default 0x80800000
+
+config BOARD_SPECIFIC_OPTIONS # dummy
+	def_bool y
+	select GENERIC_RISCV
+	imply AHCI
+	imply BOARD_LATE_INIT
+	imply CMD_POWEROFF
+    imply CMD_SBI
+	imply CMD_EXT2
+	imply CMD_EXT4
+	imply CMD_FAT
+	imply CMD_FS_GENERIC
+	imply DOS_PARTITION
+	imply ISO_PARTITION
+	imply EFI_PARTITION
+	imply SYS_NS16550
+	imply SIFIVE_SERIAL
+	imply SYSRESET
+	imply SYSRESET_CMD_POWEROFF
+	imply SYSRESET_SYSCON
+endif
+

@@ -1,0 +1,13 @@
+menuconfig PLATFORM_SZTULBX_YSYXLBX
+	bool "sztulbx ysyxlbx support"
+	default n
+    help
+        set taget is sztulbx
+
+if PLATFORM_SZTULBX_YSYXLBX
+
+config SZTU_LBX_JUMP_ADDR
+  hex "jump addr for next stage"
+  default 0x80000000
+endif
+
