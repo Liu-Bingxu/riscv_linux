@@ -3,13 +3,13 @@ SHELL_FOLDER=/home/kuuga/linux
 PLATFORM="generic"
 PROCESSORS=`cat /proc/cpuinfo |grep "processor"|wc -l`
 REBUILD_ROOTFS=$1
-# GLIB_ELF_CROSS_COMPILE_DIR=/opt/gcc-riscv64-unknown-linux-gnu
-# GLIB_ELF_CROSS_PREFIX=$GLIB_ELF_CROSS_COMPILE_DIR/bin/riscv64-unknown-linux-gnu
-# GLIB_ELF_CROSS_PREFIX_SYSROOT_DIR=$GLIB_ELF_CROSS_COMPILE_DIR/sysroot
+GLIB_ELF_CROSS_COMPILE_DIR=/opt/riscv/riscv-glibc-rv64imac
+GLIB_ELF_CROSS_PREFIX=$GLIB_ELF_CROSS_COMPILE_DIR/bin/riscv64-unknown-linux-gnu
+GLIB_ELF_CROSS_PREFIX_SYSROOT_DIR=$GLIB_ELF_CROSS_COMPILE_DIR/sysroot
 # NEWLIB_ELF_CROSS_COMPILE_DIR=/opt/gcc-riscv64-unknown-elf
 # NEWLIB_ELF_CROSS_PREFIX=$NEWLIB_ELF_CROSS_COMPILE_DIR/bin/riscv64-unknown-elf
 
-GLIB_ELF_CROSS_PREFIX=riscv64-linux-gnu
+# GLIB_ELF_CROSS_PREFIX=riscv64-linux-gnu
 NEWLIB_ELF_CROSS_PREFIX=riscv64-unknown-elf
 # rm -rf $SHELL_FOLDER/output
 
@@ -178,8 +178,8 @@ all)
     ln -s ./lib ./lib64
     cd $MAKE_ROOTFS_DIR
     fi
-    # cp -r $GLIB_ELF_CROSS_PREFIX_SYSROOT_DIR/lib/* $TARGET_ROOTFS_DIR/lib/
-    # cp -r $GLIB_ELF_CROSS_PREFIX_SYSROOT_DIR/usr/bin/* $TARGET_ROOTFS_DIR/usr/bin/
+    cp -r $GLIB_ELF_CROSS_PREFIX_SYSROOT_DIR/lib/* $TARGET_ROOTFS_DIR/lib/
+    cp -r $GLIB_ELF_CROSS_PREFIX_SYSROOT_DIR/usr/bin/* $TARGET_ROOTFS_DIR/usr/bin/
     pkexec $SHELL_FOLDER/build_rootfs/build.sh $MAKE_ROOTFS_DIR
     ;;
 bootfs)
