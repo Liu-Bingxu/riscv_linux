@@ -7,7 +7,7 @@
 	model = "ysyx for lbx";
 
 	chosen {
-        bootargs = "root=/dev/sztulbxda2 rw console=ttyS0 earlycon=sbi";
+        bootargs = "root=/dev/sztulbxda2 rw console=ttyS0";
 		stdout-path = "/soc/uart0@10000000";
 	};
 
@@ -41,7 +41,7 @@
 	soc {
 		#address-cells = <0x2>;
 		#size-cells = <0x2>;
-		compatible = "axi-crossbar";
+		compatible = "simple-bus";
 		ranges;
 
 		uart0: uart0@10000000 {
