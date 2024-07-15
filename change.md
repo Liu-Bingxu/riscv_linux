@@ -13,6 +13,8 @@
 4. 添加uboot/board/sztulbx，添加sztulbx板子
 5. 添加uboot/configs/sztulbx_ysyxlbx_defconfig，默认配置
 6. 添加uboot/include/configs/sztulbx_ysyxlbx.h，默认配置头文件
+(4). busybox
+1. 添加默认配置文件
 
 
 

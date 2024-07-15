@@ -115,14 +115,14 @@ dd of=fw.bin bs=1k conv=notrunc seek=6K  if=$SHELL_FOLDER/output/linux_kernel/Im
 # dd of=fw.bin bs=1k conv=notrunc seek=8K if=$SHELL_FOLDER/output/uboot/u-boot.bin
 
 # 编译busybox
-# echo "\033[1;4;41;32m编译busybox\033[0m"
-# if [ ! -d "$SHELL_FOLDER/output/busybox" ]; then  
-# mkdir $SHELL_FOLDER/output/busybox
-# fi  
-# cd $SHELL_FOLDER/busybox-1.33.1
-# make ARCH=riscv CROSS_COMPILE=$GLIB_ELF_CROSS_PREFIX- quard_star_defconfig
-# make ARCH=riscv CROSS_COMPILE=$GLIB_ELF_CROSS_PREFIX- -j$PROCESSORS
-# make ARCH=riscv CROSS_COMPILE=$GLIB_ELF_CROSS_PREFIX- install
+echo -e "\033[1;4;41;32m编译busybox\033[0m"
+if [ ! -d "$SHELL_FOLDER/output/busybox" ]; then  
+mkdir $SHELL_FOLDER/output/busybox
+fi  
+cd $SHELL_FOLDER/busybox-1.36.1
+make ARCH=riscv CROSS_COMPILE=$GLIB_ELF_CROSS_PREFIX- sztulbx-ysyxlbx_defconfig
+make ARCH=riscv CROSS_COMPILE=$GLIB_ELF_CROSS_PREFIX- -j$PROCESSORS
+make ARCH=riscv CROSS_COMPILE=$GLIB_ELF_CROSS_PREFIX- install
 
 # 合成文件系统映像
 echo -e "\033[1;4;41;32m合成文件系统映像\033[0m"
@@ -155,7 +155,7 @@ all)
     cp $SHELL_FOLDER/output/linux_kernel/Image $TARGET_BOOTFS_DIR/Image
     cp $SHELL_FOLDER/output/uboot/ysyxlbx_uboot.dtb $TARGET_BOOTFS_DIR/ysyxlbx_uboot.dtb
     # $SHELL_FOLDER/u-boot-2021.07/tools/mkimage -A riscv -O linux -T script -C none -a 0 -e 0 -n "Distro Boot Script" -d $SHELL_FOLDER/dts/quard_star_uboot.cmd $TARGET_BOOTFS_DIR/boot.scr
-    # cp -r $SHELL_FOLDER/output/busybox/* $TARGET_ROOTFS_DIR/
+    cp -r $SHELL_FOLDER/output/busybox/* $TARGET_ROOTFS_DIR/
     # cp -r $SHELL_FOLDER/target_root_script/* $TARGET_ROOTFS_DIR/
     if [ ! -d "$TARGET_ROOTFS_DIR/proc" ]; then  
     mkdir $TARGET_ROOTFS_DIR/proc
