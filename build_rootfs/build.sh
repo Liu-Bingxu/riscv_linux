@@ -10,7 +10,7 @@ mount /dev/loop70p1 $1/target/bootfs
 mount /dev/loop70p2 $1/target/rootfs
 
 cp -r $1/bootfs/* $1/target/bootfs/
-cp -r $1/rootfs/* $1/target/rootfs/
+cp -r -p $1/rootfs/* $1/target/rootfs/
 sync
 echo "please wait 5s"
 sleep 5

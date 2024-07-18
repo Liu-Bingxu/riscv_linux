@@ -156,7 +156,7 @@ all)
     cp $SHELL_FOLDER/output/uboot/ysyxlbx_uboot.dtb $TARGET_BOOTFS_DIR/ysyxlbx_uboot.dtb
     # $SHELL_FOLDER/u-boot-2021.07/tools/mkimage -A riscv -O linux -T script -C none -a 0 -e 0 -n "Distro Boot Script" -d $SHELL_FOLDER/dts/quard_star_uboot.cmd $TARGET_BOOTFS_DIR/boot.scr
     cp -r $SHELL_FOLDER/output/busybox/* $TARGET_ROOTFS_DIR/
-    # cp -r $SHELL_FOLDER/target_root_script/* $TARGET_ROOTFS_DIR/
+    cp -r -p $SHELL_FOLDER/target_root_script/* $TARGET_ROOTFS_DIR/
     if [ ! -d "$TARGET_ROOTFS_DIR/proc" ]; then  
     mkdir $TARGET_ROOTFS_DIR/proc
     fi
@@ -179,6 +179,7 @@ all)
     cd $MAKE_ROOTFS_DIR
     fi
     cp -r $GLIB_ELF_CROSS_PREFIX_SYSROOT_DIR/lib/* $TARGET_ROOTFS_DIR/lib/
+    cp -r $GLIB_ELF_CROSS_PREFIX_SYSROOT_DIR/lib64/lp64/* $TARGET_ROOTFS_DIR/lib/
     cp -r $GLIB_ELF_CROSS_PREFIX_SYSROOT_DIR/usr/bin/* $TARGET_ROOTFS_DIR/usr/bin/
     pkexec $SHELL_FOLDER/build_rootfs/build.sh $MAKE_ROOTFS_DIR
     ;;

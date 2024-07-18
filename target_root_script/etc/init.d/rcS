@@ -1,0 +1,10 @@
+#! /bin/sh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+/bin/mount -a
+/sbin/mdev -s
+/bin/mount -a
+
+echo "-----------------------------------------------"
+echo " Welcome debugging on Nemu ysyx for lbx board! "
+echo "-----------------------------------------------"
